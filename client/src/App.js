@@ -17,11 +17,12 @@ const App = () => {
   return (
     <div>
       <SavedList list={savedList} />
-      <Route exact path="/" render={props => <MovieList {...props} movie={savedList}/> }/>
-      <Route path="/movies/:id" render={props => <Movie {...props} movie={savedList}/> }/>
+      <Route exact path="/" component={MovieList}/>
+      <Route path="/movies/:id" render={props => <Movie {...props} addToSavedList={addToSavedList}/> }/>
     </div>
   );
 };
 
 export default App;
+
 
