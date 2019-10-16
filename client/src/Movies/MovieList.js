@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom"
+import styled from "styled-components";
 
 const MovieList = props => {
   const [movies, setMovies] = useState([])
@@ -30,7 +32,8 @@ const MovieList = props => {
 function MovieDetails({ movie }) {
   const { title, director, metascore, stars } = movie;
   return (
-    <div className="movie-card">
+    <Container className="movie-card">
+      <Link to= {`/movies/${movie.id}`}>+</Link>
       <h2>{title}</h2>
       <div className="movie-director">
         Director: <em>{director}</em>
@@ -45,8 +48,13 @@ function MovieDetails({ movie }) {
           {star}
         </div>
       ))}
-    </div>
+    </Container>
   );
 }
 
 export default MovieList;
+
+const Container = styled.div`
+margin-right: 100px;
+margin-left: 100px;
+`
